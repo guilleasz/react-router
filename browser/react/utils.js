@@ -12,6 +12,10 @@ export const convertAlbum = (album) => {
 export const convertAlbums = (albums) =>
   albums.map(album => convertAlbum(album));
 
+export const convertArtist = (artist, albums, songs) => {
+  return Object.assign({}, artist, { albums : convertAlbums(albums) }, { songs: songs.map(convertSong) });
+}
+
 const mod = (num, m) => ((num % m) + m) % m;
 
 export const skip = (interval, { currentSongList, currentSong }) => {
