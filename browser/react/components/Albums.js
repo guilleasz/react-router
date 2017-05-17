@@ -3,8 +3,7 @@ import React from 'react';
 import AlbumPreview from './AlbumPreview';
 
 const Albums = (props) => {
-
-  const albums = props.albums;
+  const albums = props.albums || [];
 
   return (
     <div>

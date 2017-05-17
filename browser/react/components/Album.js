@@ -2,9 +2,11 @@ import React from 'react';
 import Songs from '../components/Songs';
 
 class Album extends React.Component {
+  componentDidMount() {
+    this.props.selectAlbum(this.props.params.albumId);
+  }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.params.albumId, this.props.params.albumId)
     if (nextProps.params.albumId !== this.props.params.albumId) {
       nextProps.selectAlbum(nextProps.params.albumId);
     }
@@ -17,7 +19,7 @@ class Album extends React.Component {
     return (
       <div className="album">
         <div>
-          <h3>{ album.name }</h3>
+          <h3>{ album.name } <a href={`mailto:?Subject=Listen to this Album!&body= Hey,\nListen to this album: ${window.location.href}`}><button className="btn btn-default"><span className="glyphicon glyphicon-share"></span></button></a></h3>
           <img src={ album.imageUrl } className="img-thumbnail" />
         </div>
         <Songs
